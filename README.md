@@ -13,9 +13,13 @@ every class object an instance of?
 Try to find out in `irb`: take a class
 like `String`, and find out its class (which method do you think we need for this?).
 
+CLASS
+
 ### Exercise 1.2
 
 Figure out the superclass of the class you found in exercise 1.1.
+
+MODULE
 
 ### Exercise 1.3
 

@@ -1,14 +1,38 @@
 # TODO: Write my_attr_reader
 # TODO: Write my_attr_writer
 # TODO: Write my_attr_accessor, preferably using my_attr_reader and my_attr_writer
+class Module
+  def my_attr_reader(*args)
+    args.each do |arg|
+      define_method(arg) do
+        instance_variable_get("@#{arg}")
+      end
+    end
+  end
+
+  def my_attr_writer(*args)
+    args.each do |arg|
+      define_method("#{arg}=") do |value|
+        instance_variable_set("@#{arg}", value)
+      end
+    end
+  end
+
+  def my_attr_accessor(*args)
+    my_attr_reader(*args)
+    my_attr_writer(*args)
+  end
+end
+
+
 
 class Singer
   # TODO: Change to my_attr_writer
-  attr_writer :first_name
+  my_attr_writer :first_name
   # TODO: Change to my_attr_reader
-  attr_reader :last_name
+  my_attr_reader :last_name
   # TODO: Change to my_attr_acessor
-  attr_accessor :birth_year, :greatest_hit
+  my_attr_accessor :birth_year, :greatest_hit
 
   def initialize(first_name, last_name, birth_year, greatest_hit)
     @first_name = first_name
